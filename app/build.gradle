@@ -38,6 +38,10 @@ dependencies {
     implementation Dependencies.AndroidxLibraries.appcompat
     implementation Dependencies.AndroidxLibraries.coreKtx
     implementation Dependencies.AndroidxLibraries.constraintlayout
+    implementation Dependencies.GeneralLibraries.koin
+
+    implementation project(Dependencies.CommonsModules.core)
+    implementation project(Dependencies.CommonsModules.network)
 
     implementation Dependencies.GeneralLibraries.multidex
     implementation Dependencies.GeneralLibraries.kotlin

@@ -10,9 +10,14 @@ class Dependencies : Plugin<Project> {
         const val id = "com.hernandazevedo.zaap"
     }
 
-    object CoreModules {
+    object MainModules {
         const val app = ":app"
         const val operations = ":operations"
+    }
+
+    object CommonsModules {
+        const val network = ":commons:network"
+        const val core = ":commons:core"
     }
 
     object FeatureModules {
@@ -24,6 +29,11 @@ class Dependencies : Plugin<Project> {
         const val versionName = "1.0"
     }
 
+    object GeneralNames {
+        const val testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+        const val consumerProguard = "consumer-rules.pro"
+    }
+
     object Versions {
 
         const val compileSdk = 30
@@ -31,8 +41,11 @@ class Dependencies : Plugin<Project> {
         const val targetSdk = 30
         const val buildTools = "30.0.0"
         const val kotlin = "1.4.10"
+        const val koin = "2.0.1"
 
-        const val kotlinCoroutines = "1.3.9"
+        const val kotlinCoroutines = "1.3.1"
+        const val kotlinCoroutinesAdapter = "0.9.2"
+        const val kotlinTest = "1.3.50"
 
         const val kotlinPoet = "1.7.1"
         const val okio = "2.9.0"
@@ -44,6 +57,9 @@ class Dependencies : Plugin<Project> {
 
         const val moshi = "1.11.0"
         const val jsonObject = "20200518"
+
+        const val retrofit = "2.6.0"
+        const val loggingInterceptor = "4.0.0"
 
         const val junit5 = "5.7.0"
         const val junit4 = "4.13"
@@ -77,6 +93,14 @@ class Dependencies : Plugin<Project> {
         const val kotlinCoroutines =
             "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinCoroutines}"
 
+        const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+
+        const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
+        const val kotlinCoroutinesAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Versions.kotlinCoroutinesAdapter}"
+
+        const val koin = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
+
+
         const val jsonObject = "org.json:json:${Versions.jsonObject}"
 
         const val multidex = "androidx.multidex:multidex:${Versions.multidex}"
@@ -98,6 +122,7 @@ class Dependencies : Plugin<Project> {
 
     object MoshiLibraries {
         const val moshi = "com.squareup.moshi:moshi:${Versions.moshi}"
+        const val moshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
         const val kotlin = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
         const val adapters = "com.squareup.moshi:moshi-adapters:${Versions.moshi}"
     }
@@ -121,6 +146,8 @@ class Dependencies : Plugin<Project> {
         const val cucumberPicocontainer = "info.cukes:cucumber-picocontainer:${Versions.cucumber}"
         const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
         const val kotlinCompileTesting = "com.github.tschuchortdev:kotlin-compile-testing:${Versions.kotlinCompileTesting}"
+        const val koin = "org.koin:koin-test:${Versions.koin}"
+        const val kotlinTest = "org.jetbrains.kotlin:kotlin-test:${Versions.kotlinTest}"
     }
 
 }

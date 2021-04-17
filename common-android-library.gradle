@@ -1,0 +1,31 @@
+import com.hernandazevedo.dependencies.Dependencies
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Dependencies.Versions.compileSdk
+
+    defaultConfig {
+        minSdkVersion Dependencies.Versions.minSdk
+        targetSdkVersion Dependencies.Versions.targetSdk
+        versionCode Dependencies.Releases.versionCode
+        versionName "${Dependencies.Releases.versionName}"
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
+        release {
+            minifyEnabled true
+        }
+    }
+
+    testOptions.unitTests.includeAndroidResources = true
+}
+
+dependencies {
+    implementation Dependencies.GeneralLibraries.kotlin
+}
