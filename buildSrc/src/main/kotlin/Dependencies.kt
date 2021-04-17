@@ -1,10 +1,5 @@
 package com.hernandazevedo.dependencies
 
-import org.gradle.api.Plugin
-import org.gradle.api.Project
-
-class Dependencies : Plugin<Project> {
-    override fun apply(project: Project) {}
 
     object ApplicationId {
         const val id = "com.hernandazevedo.zaap"
@@ -149,5 +144,3 @@ class Dependencies : Plugin<Project> {
         const val koin = "org.koin:koin-test:${Versions.koin}"
         const val kotlinTest = "org.jetbrains.kotlin:kotlin-test:${Versions.kotlinTest}"
     }
-
-}

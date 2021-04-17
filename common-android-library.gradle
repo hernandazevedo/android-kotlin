@@ -1,17 +1,17 @@
-import com.hernandazevedo.dependencies.Dependencies
+import com.hernandazevedo.dependencies.*
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion Dependencies.Versions.compileSdk
+    compileSdkVersion Versions.compileSdk
 
     defaultConfig {
-        minSdkVersion Dependencies.Versions.minSdk
-        targetSdkVersion Dependencies.Versions.targetSdk
-        versionCode Dependencies.Releases.versionCode
-        versionName "${Dependencies.Releases.versionName}"
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Releases.versionCode
+        versionName "${Releases.versionName}"
     }
 
     buildTypes {
@@ -27,5 +27,5 @@ android {
 }
 
 dependencies {
-    implementation Dependencies.GeneralLibraries.kotlin
+    implementation GeneralLibraries.kotlin
 }
