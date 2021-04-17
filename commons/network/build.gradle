@@ -1,13 +1,13 @@
-import com.hernandazevedo.dependencies.*
+import com.hernandazevedo.Dependencies
 
 apply from: "$rootDir/common-kotlin-library.gradle"
 
 dependencies {
-    implementation GeneralLibraries.retrofit
-    implementation GeneralLibraries.kotlinCoroutinesAdapter
-    implementation MoshiLibraries.moshiConverter
-    implementation GeneralLibraries.loggingInterceptor
+    implementation Dependencies.GeneralLibraries.retrofit
+    implementation Dependencies.GeneralLibraries.kotlinCoroutinesAdapter
+    implementation Dependencies.MoshiLibraries.moshiConverter
+    implementation Dependencies.GeneralLibraries.loggingInterceptor
 
     // Unit Testing
-    testImplementation TestLibraries.junit4
+    testImplementation Dependencies.TestLibraries.junit4
 }

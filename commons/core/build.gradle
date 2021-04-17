@@ -1,22 +1,22 @@
-import com.hernandazevedo.dependencies.*
+import com.hernandazevedo.Dependencies
 
 apply from: "$rootDir/common-android-library.gradle"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation AndroidxLibraries.appcompat
+    implementation Dependencies.AndroidxLibraries.appcompat
 
-    implementation GeneralLibraries.kotlinCoroutines
+    implementation Dependencies.GeneralLibraries.kotlinCoroutines
 
-    implementation GeneralLibraries.koin
+    implementation Dependencies.GeneralLibraries.koin
 
     // Unit Testing
-    testImplementation TestLibraries.junit4
-    testImplementation TestLibraries.kotlinTest
-    testImplementation TestLibraries.mockk
+    testImplementation Dependencies.TestLibraries.junit4
+    testImplementation Dependencies.TestLibraries.kotlinTest
+    testImplementation Dependencies.TestLibraries.mockk
 
     // Integration Testing
-    androidTestImplementation TestLibraries.testRunner
-    androidTestImplementation TestLibraries.testExt
-    androidTestImplementation TestLibraries.espressoCore
+    androidTestImplementation Dependencies.TestLibraries.testRunner
+    androidTestImplementation Dependencies.TestLibraries.testExt
+    androidTestImplementation Dependencies.TestLibraries.espressoCore
 }

@@ -1,5 +1,10 @@
-package com.hernandazevedo.dependencies
+package com.hernandazevedo
 
+import org.gradle.api.Plugin
+import org.gradle.api.Project
+
+class Dependencies : Plugin<Project> {
+    override fun apply(project: Project) {}
 
     object ApplicationId {
         const val id = "com.hernandazevedo.zaap"
@@ -90,8 +95,10 @@ package com.hernandazevedo.dependencies
 
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
 
-        const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
-        const val kotlinCoroutinesAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Versions.kotlinCoroutinesAdapter}"
+        const val loggingInterceptor =
+            "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
+        const val kotlinCoroutinesAdapter =
+            "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Versions.kotlinCoroutinesAdapter}"
 
         const val koin = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
 
@@ -110,9 +117,10 @@ package com.hernandazevedo.dependencies
         const val coreKtx = "androidx.core:core-ktx:${Versions.appcompat}"
         const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
         const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewModel}"
-        const val viewModelExtensions = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.viewModel}"
+        const val viewModelExtensions =
+            "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.viewModel}"
         const val constraintlayout =
-                "androidx.constraintlayout:constraintlayout:${Versions.constraintlayout}"
+            "androidx.constraintlayout:constraintlayout:${Versions.constraintlayout}"
     }
 
     object MoshiLibraries {
@@ -128,8 +136,10 @@ package com.hernandazevedo.dependencies
         const val junitEngine = "org.junit.jupiter:junit-jupiter-engine:${Versions.junit5}"
         const val junitVintageEngine = "org.junit.vintage:junit-vintage-engine:${Versions.junit5}"
         const val mockk = "io.mockk:mockk:${Versions.mockk}"
-        const val kotlinCoroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kotlinCoroutinesTest}"
-        const val googleCompileTesting = "com.google.testing.compile:compile-testing:${Versions.googleCompileTesting}"
+        const val kotlinCoroutinesTest =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kotlinCoroutinesTest}"
+        const val googleCompileTesting =
+            "com.google.testing.compile:compile-testing:${Versions.googleCompileTesting}"
         const val archCoreTesting = "androidx.arch.core:core-testing:${Versions.archCoreTesting}"
         const val testRunner = "androidx.test:runner:${Versions.testRunner}"
         const val testExt = "androidx.test.ext:junit:${Versions.testExt}"
@@ -140,7 +150,9 @@ package com.hernandazevedo.dependencies
         const val cucumberAndroid = "info.cukes:cucumber-android:${Versions.cucumber}"
         const val cucumberPicocontainer = "info.cukes:cucumber-picocontainer:${Versions.cucumber}"
         const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
-        const val kotlinCompileTesting = "com.github.tschuchortdev:kotlin-compile-testing:${Versions.kotlinCompileTesting}"
+        const val kotlinCompileTesting =
+            "com.github.tschuchortdev:kotlin-compile-testing:${Versions.kotlinCompileTesting}"
         const val koin = "org.koin:koin-test:${Versions.koin}"
         const val kotlinTest = "org.jetbrains.kotlin:kotlin-test:${Versions.kotlinTest}"
     }
+}

@@ -1,4 +1,4 @@
-package com.hernandazevedo.zaap.core.exception
+package com.hernandazevedo.zaap.core.base.exception
 
 sealed class Failure {
     object NetworkConnection : Failure()

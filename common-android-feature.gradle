@@ -1,18 +1,17 @@
-import com.hernandazevedo.*
+import com.hernandazevedo.Dependencies
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply from: "$rootDir/jacoco.gradle"
 
 android {
-    compileSdkVersion Versions.compileSdk
-    buildToolsVersion Versions.buildTools
+    compileSdkVersion Dependencies.Versions.compileSdk
+    buildToolsVersion Dependencies.Versions.buildTools
 
     defaultConfig {
-        minSdkVersion Versions.minSdk
-        targetSdkVersion Versions.targetSdk
-        testInstrumentationRunner GeneralNames.testInstrumentationRunner
+        minSdkVersion Dependencies.Versions.minSdk
+        targetSdkVersion Dependencies.Versions.targetSdk
+        testInstrumentationRunner Dependencies.GeneralNames.testInstrumentationRunner
     }
 
     buildTypes {
@@ -34,9 +33,19 @@ android {
 }
 
 dependencies {
-    implementation GeneralLibraries.kotlin
+    implementation Dependencies.GeneralLibraries.kotlin
 
     // Unit Testing
-    testImplementation TestLibraries.testCore
-    testImplementation TestLibraries.koin
+    // Unit Testing
+    testImplementation Dependencies.TestLibraries.kotlinCoroutinesTest
+    testImplementation Dependencies.TestLibraries.mockk
+    testImplementation Dependencies.TestLibraries.archCoreTesting
+    testImplementation Dependencies.GeneralLibraries.jsonObject
+
+    testImplementation Dependencies.TestLibraries.junitApi
+    testImplementation Dependencies.TestLibraries.junitEngine
+    testImplementation Dependencies.TestLibraries.junit4
+    testImplementation Dependencies.TestLibraries.junitVintageEngine
+
+    testImplementation Dependencies.TestLibraries.koin
 }

@@ -1,17 +1,17 @@
-import com.hernandazevedo.dependencies.*
+import com.hernandazevedo.Dependencies
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion Versions.compileSdk
+    compileSdkVersion Dependencies.Versions.compileSdk
 
     defaultConfig {
-        minSdkVersion Versions.minSdk
-        targetSdkVersion Versions.targetSdk
-        versionCode Releases.versionCode
-        versionName "${Releases.versionName}"
+        minSdkVersion Dependencies.Versions.minSdk
+        targetSdkVersion Dependencies.Versions.targetSdk
+        versionCode Dependencies.Releases.versionCode
+        versionName "${Dependencies.Releases.versionName}"
     }
 
     buildTypes {
@@ -27,5 +27,17 @@ android {
 }
 
 dependencies {
-    implementation GeneralLibraries.kotlin
+    implementation Dependencies.GeneralLibraries.kotlin
+    implementation Dependencies.AndroidxLibraries.appcompat
+    implementation Dependencies.AndroidxLibraries.coreKtx
+    // Unit Testing
+    testImplementation Dependencies.TestLibraries.kotlinCoroutinesTest
+    testImplementation Dependencies.TestLibraries.mockk
+    testImplementation Dependencies.TestLibraries.archCoreTesting
+    testImplementation Dependencies.GeneralLibraries.jsonObject
+
+    testImplementation Dependencies.TestLibraries.junitApi
+    testImplementation Dependencies.TestLibraries.junitEngine
+    testImplementation Dependencies.TestLibraries.junit4
+    testImplementation Dependencies.TestLibraries.junitVintageEngine
 }

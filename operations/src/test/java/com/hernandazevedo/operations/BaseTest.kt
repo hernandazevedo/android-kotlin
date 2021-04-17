@@ -13,7 +13,6 @@ abstract class BaseTest {
     @BeforeEach
     open fun setUp() {
         MockKAnnotations.init(this)
-
     }
 
     @AfterEach
