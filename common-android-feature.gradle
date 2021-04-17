@@ -1,0 +1,42 @@
+import com.hernandazevedo.*
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply from: "$rootDir/jacoco.gradle"
+
+android {
+    compileSdkVersion Versions.compileSdk
+    buildToolsVersion Versions.buildTools
+
+    defaultConfig {
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        testInstrumentationRunner GeneralNames.testInstrumentationRunner
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    android {
+        testOptions {
+            animationsDisabled true
+            unitTests.includeAndroidResources = true
+        }
+    }
+}
+
+dependencies {
+    implementation GeneralLibraries.kotlin
+
+    // Unit Testing
+    testImplementation TestLibraries.testCore
+    testImplementation TestLibraries.koin
+}

@@ -1,20 +1,22 @@
+import com.hernandazevedo.dependencies.*
+
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
 }
 
-import com.hernandazevedo.dependencies.Dependencies
+//import com.hernandazevedo.Dependencies
 
 android {
-    compileSdkVersion Dependencies.Versions.compileSdk
-    buildToolsVersion Dependencies.Versions.buildTools
+    compileSdkVersion Versions.compileSdk
+    buildToolsVersion Versions.buildTools
 
     defaultConfig {
-        applicationId Dependencies.ApplicationId.id
-        minSdkVersion Dependencies.Versions.minSdk
-        targetSdkVersion Dependencies.Versions.targetSdk
-        versionCode Dependencies.Releases.versionCode
-        versionName Dependencies.Releases.versionName
+        applicationId ApplicationId.id
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Releases.versionCode
+        versionName Releases.versionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -35,11 +37,15 @@ android {
 }
 
 dependencies {
-    implementation Dependencies.AndroidxLibraries.appcompat
-    implementation Dependencies.AndroidxLibraries.coreKtx
-    implementation Dependencies.AndroidxLibraries.constraintlayout
+    implementation AndroidxLibraries.appcompat
+    implementation AndroidxLibraries.coreKtx
+    implementation AndroidxLibraries.constraintlayout
+    implementation GeneralLibraries.koin
 
-    implementation Dependencies.GeneralLibraries.multidex
-    implementation Dependencies.GeneralLibraries.kotlin
-    implementation Dependencies.GeneralLibraries.kotlinCoroutines
+    implementation project(CommonsModules.core)
+    implementation project(CommonsModules.network)
+
+    implementation GeneralLibraries.multidex
+    implementation GeneralLibraries.kotlin
+    implementation GeneralLibraries.kotlinCoroutines
 }

@@ -1,0 +1,7 @@
+import com.hernandazevedo.dependencies.*
+
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation GeneralLibraries.kotlin
+}

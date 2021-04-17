@@ -1,18 +1,19 @@
+import com.hernandazevedo.dependencies.*
+
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
 }
-import com.hernandazevedo.dependencies.Dependencies
 
 android {
-    compileSdkVersion Dependencies.Versions.compileSdk
-    buildToolsVersion Dependencies.Versions.buildTools
+    compileSdkVersion Versions.compileSdk
+    buildToolsVersion Versions.buildTools
 
     defaultConfig {
-        minSdkVersion Dependencies.Versions.minSdk
-        targetSdkVersion Dependencies.Versions.targetSdk
-        versionCode Dependencies.Releases.versionCode
-        versionName Dependencies.Releases.versionName
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Releases.versionCode
+        versionName Releases.versionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -35,14 +36,14 @@ android {
 
 dependencies {
 
-    implementation Dependencies.GeneralLibraries.kotlin
-    implementation Dependencies.AndroidxLibraries.appcompat
-    implementation Dependencies.AndroidxLibraries.coreKtx
+    implementation GeneralLibraries.kotlin
+    implementation AndroidxLibraries.appcompat
+    implementation AndroidxLibraries.coreKtx
 
-    testImplementation Dependencies.TestLibraries.mockk
+    testImplementation TestLibraries.mockk
 
-    testImplementation Dependencies.TestLibraries.junitApi
-    testImplementation Dependencies.TestLibraries.junitEngine
-    testImplementation Dependencies.TestLibraries.junit4
-    testImplementation Dependencies.TestLibraries.junitVintageEngine
+    testImplementation TestLibraries.junitApi
+    testImplementation TestLibraries.junitEngine
+    testImplementation TestLibraries.junit4
+    testImplementation TestLibraries.junitVintageEngine
 }

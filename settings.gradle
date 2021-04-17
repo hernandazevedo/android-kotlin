@@ -1,2 +1,5 @@
+//TODO understand how to use the kotlin dsl to load the modules here with the new version of gradle
 include ':app'
 include ':operations'
+include ':commons:network'
+include ':commons:core'
