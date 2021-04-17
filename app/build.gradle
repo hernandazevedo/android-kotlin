@@ -3,16 +3,18 @@ plugins {
     id 'kotlin-android'
 }
 
+import com.hernandazevedo.dependencies.Dependencies
+
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion Dependencies.Versions.compileSdk
+    buildToolsVersion Dependencies.Versions.buildTools
 
     defaultConfig {
-        applicationId "com.hernandazevedo.zaap"
-        minSdkVersion 19
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        applicationId Dependencies.ApplicationId.id
+        minSdkVersion Dependencies.Versions.minSdk
+        targetSdkVersion Dependencies.Versions.targetSdk
+        versionCode Dependencies.Releases.versionCode
+        versionName Dependencies.Releases.versionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -33,12 +35,11 @@ android {
 }
 
 dependencies {
+    implementation Dependencies.AndroidxLibraries.appcompat
+    implementation Dependencies.AndroidxLibraries.coreKtx
+    implementation Dependencies.AndroidxLibraries.constraintlayout
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation project(':operations')
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation Dependencies.GeneralLibraries.multidex
+    implementation Dependencies.GeneralLibraries.kotlin
+    implementation Dependencies.GeneralLibraries.kotlinCoroutines
 }
