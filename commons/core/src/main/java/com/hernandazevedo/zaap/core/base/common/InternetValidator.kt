@@ -1,4 +1,4 @@
-package com.hernandazevedo.zaap.core.common
+package com.hernandazevedo.zaap.core.base.common
 
 import android.content.Context
 import android.net.ConnectivityManager

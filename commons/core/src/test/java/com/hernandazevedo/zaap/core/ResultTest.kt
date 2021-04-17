@@ -2,7 +2,7 @@ package com.hernandazevedo.zaap.core
 
 import com.hernandazevedo.zaap.core.base.Result
 import com.hernandazevedo.zaap.core.base.withDefault
-import com.hernandazevedo.zaap.core.exception.Failure
+import com.hernandazevedo.zaap.core.base.exception.Failure
 import com.hernandazevedo.zaap.core.MockkUtil.verify
 import io.mockk.spyk
 import org.junit.Test

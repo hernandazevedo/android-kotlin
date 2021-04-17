@@ -1,7 +1,7 @@
 package com.hernandazevedo.zaap.di
 
-import com.hernandazevedo.zaap.core.common.InternetValidator
-import com.hernandazevedo.zaap.core.common.ResourceManager
+import com.hernandazevedo.zaap.core.base.common.InternetValidator
+import com.hernandazevedo.zaap.core.base.common.ResourceManager
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 

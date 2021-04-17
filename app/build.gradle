@@ -1,22 +1,18 @@
-import com.hernandazevedo.dependencies.*
-
+import com.hernandazevedo.Dependencies
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
 }
-
-//import com.hernandazevedo.Dependencies
-
 android {
-    compileSdkVersion Versions.compileSdk
-    buildToolsVersion Versions.buildTools
+    compileSdkVersion Dependencies.Versions.compileSdk
+    buildToolsVersion Dependencies.Versions.buildTools
 
     defaultConfig {
-        applicationId ApplicationId.id
-        minSdkVersion Versions.minSdk
-        targetSdkVersion Versions.targetSdk
-        versionCode Releases.versionCode
-        versionName Releases.versionName
+        applicationId Dependencies.ApplicationId.id
+        minSdkVersion Dependencies.Versions.minSdk
+        targetSdkVersion Dependencies.Versions.targetSdk
+        versionCode Dependencies.Releases.versionCode
+        versionName Dependencies.Releases.versionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -37,15 +33,22 @@ android {
 }
 
 dependencies {
-    implementation AndroidxLibraries.appcompat
-    implementation AndroidxLibraries.coreKtx
-    implementation AndroidxLibraries.constraintlayout
-    implementation GeneralLibraries.koin
+    implementation Dependencies.AndroidxLibraries.appcompat
+    implementation Dependencies.AndroidxLibraries.coreKtx
+    implementation Dependencies.AndroidxLibraries.constraintlayout
+    implementation Dependencies.GeneralLibraries.koin
 
-    implementation project(CommonsModules.core)
-    implementation project(CommonsModules.network)
+    implementation project(Dependencies.CommonsModules.core)
+    implementation project(Dependencies.CommonsModules.network)
 
-    implementation GeneralLibraries.multidex
-    implementation GeneralLibraries.kotlin
-    implementation GeneralLibraries.kotlinCoroutines
+    implementation Dependencies.GeneralLibraries.multidex
+    implementation Dependencies.GeneralLibraries.kotlin
+    implementation Dependencies.GeneralLibraries.kotlinCoroutines
+
+
+    testImplementation Dependencies.TestLibraries.junitApi
+    testImplementation Dependencies.TestLibraries.junitEngine
+    testImplementation Dependencies.TestLibraries.junit4
+    testImplementation Dependencies.TestLibraries.junitVintageEngine
+
 }

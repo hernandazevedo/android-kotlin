@@ -2,7 +2,7 @@ package com.hernandazevedo.zaap.core.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.hernandazevedo.zaap.core.exception.Failure
+import com.hernandazevedo.zaap.core.base.exception.Failure
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async

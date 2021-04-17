@@ -1,19 +1,18 @@
-import com.hernandazevedo.dependencies.*
+import com.hernandazevedo.Dependencies
 
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
 }
-
 android {
-    compileSdkVersion Versions.compileSdk
-    buildToolsVersion Versions.buildTools
+    compileSdkVersion Dependencies.Versions.compileSdk
+    buildToolsVersion Dependencies.Versions.buildTools
 
     defaultConfig {
-        minSdkVersion Versions.minSdk
-        targetSdkVersion Versions.targetSdk
-        versionCode Releases.versionCode
-        versionName Releases.versionName
+        minSdkVersion Dependencies.Versions.minSdk
+        targetSdkVersion Dependencies.Versions.targetSdk
+        versionCode Dependencies.Releases.versionCode
+        versionName Dependencies.Releases.versionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -36,14 +35,18 @@ android {
 
 dependencies {
 
-    implementation GeneralLibraries.kotlin
-    implementation AndroidxLibraries.appcompat
-    implementation AndroidxLibraries.coreKtx
+    implementation Dependencies.GeneralLibraries.kotlin
+    implementation Dependencies.AndroidxLibraries.appcompat
+    implementation Dependencies.AndroidxLibraries.coreKtx
+    // Unit Testing
+    testImplementation Dependencies.TestLibraries.kotlinCoroutinesTest
+    testImplementation Dependencies.TestLibraries.mockk
+    testImplementation Dependencies.TestLibraries.archCoreTesting
+    testImplementation Dependencies.GeneralLibraries.jsonObject
 
-    testImplementation TestLibraries.mockk
+    testImplementation Dependencies.TestLibraries.junitApi
+    testImplementation Dependencies.TestLibraries.junitEngine
+    testImplementation Dependencies.TestLibraries.junit4
+    testImplementation Dependencies.TestLibraries.junitVintageEngine
 
-    testImplementation TestLibraries.junitApi
-    testImplementation TestLibraries.junitEngine
-    testImplementation TestLibraries.junit4
-    testImplementation TestLibraries.junitVintageEngine
 }
