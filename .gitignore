@@ -50,6 +50,24 @@ captures/
 # Comment next line if keeping position of elements in Navigation Editor is relevant for you
 .idea/navEditor.xml
 
+.DS_Store
+HELP.md
+target/
+build/
+../out/
+.gradle/
+**/.idea/*
+!**/.idea/copyright
+projectFilesBackup/
+out/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+common/gradle*
+schema/gradle*
+*.orig
+/fastlane/kdocs/public/
+
 # Keystore files
 # Uncomment the following lines if you do not want to check your keystore files in.
 #*.jks
