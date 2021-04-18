@@ -3,3 +3,5 @@ include ':app'
 include ':operations'
 include ':commons:network'
 include ':commons:core'
+
+include ':features:search-property'

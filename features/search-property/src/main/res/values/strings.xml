@@ -1,0 +1,9 @@
+<resources>
+    <string name="search_button_viva_real">Viva Real</string>
+    <string name="search_button_zap">Zap</string>
+    <string name="search_button_useterms">termos e privacidade</string>
+
+    <string name="failure_network_connection">No Network Connection.</string>
+    <string name="failure_server_error">Server Error</string>
+    <string name="failure_search_error">Error performing search: %1$s</string>
+</resources>

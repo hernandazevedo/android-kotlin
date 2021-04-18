@@ -1,0 +1,29 @@
+import com.hernandazevedo.Dependencies
+
+apply from: "$rootDir/common-android-feature.gradle"
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Dependencies.AndroidxLibraries.appcompat
+    implementation Dependencies.AndroidxLibraries.constraintlayout
+    implementation Dependencies.GoogleLibraries.materialDesign
+
+    implementation Dependencies.GeneralLibraries.kotlinCoroutines
+
+    implementation Dependencies.GeneralLibraries.koin
+
+    implementation Dependencies.GeneralLibraries.retrofit
+    implementation Dependencies.GeneralLibraries.okHttp
+    implementation Dependencies.MoshiLibraries.moshiConverter
+    implementation Dependencies.GeneralLibraries.loggingInterceptor
+
+    implementation project(Dependencies.CommonsModules.core)
+    implementation project(Dependencies.CommonsModules.network)
+
+
+    testImplementation Dependencies.TestLibraries.junitApi
+    testImplementation Dependencies.TestLibraries.junitEngine
+    testImplementation Dependencies.TestLibraries.junit4
+    testImplementation Dependencies.TestLibraries.junitVintageEngine
+
+}
