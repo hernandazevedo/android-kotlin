@@ -41,10 +41,14 @@ dependencies {
     implementation project(Dependencies.CommonsModules.core)
     implementation project(Dependencies.CommonsModules.network)
 
+    //Feature modules
+    Dependencies.FeatureModules.asList.forEach { module ->
+        implementation project(module)
+    }
+
     implementation Dependencies.GeneralLibraries.multidex
     implementation Dependencies.GeneralLibraries.kotlin
     implementation Dependencies.GeneralLibraries.kotlinCoroutines
-
 
     testImplementation Dependencies.TestLibraries.junitApi
     testImplementation Dependencies.TestLibraries.junitEngine

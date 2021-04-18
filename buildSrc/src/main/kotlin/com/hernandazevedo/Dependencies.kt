@@ -21,7 +21,8 @@ class Dependencies : Plugin<Project> {
     }
 
     object FeatureModules {
-        var modules = listOf(":features:home")
+        const val searchProperty = ":features:search-property"
+        val asList = listOf(FeatureModules.searchProperty)
     }
 
     object Releases {
@@ -58,8 +59,10 @@ class Dependencies : Plugin<Project> {
         const val moshi = "1.11.0"
         const val jsonObject = "20200518"
 
-        const val retrofit = "2.6.0"
-        const val loggingInterceptor = "4.0.0"
+        const val retrofit = "2.9.0"
+        const val okHttp = "4.7.0"
+
+        const val loggingInterceptor = "4.7.2"
 
         const val junit5 = "5.7.0"
         const val junit4 = "4.13"
@@ -94,6 +97,8 @@ class Dependencies : Plugin<Project> {
             "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinCoroutines}"
 
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+
+        const val okHttp = "com.squareup.okhttp3:okhttp-urlconnection:${Versions.okHttp}"
 
         const val loggingInterceptor =
             "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
