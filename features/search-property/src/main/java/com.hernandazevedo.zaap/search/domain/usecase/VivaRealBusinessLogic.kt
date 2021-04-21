@@ -4,7 +4,7 @@ import com.hernandazevedo.zaap.search.domain.model.SearchResponseItemDomain
 
 class VivaRealBusinessLogic(val commonBusinessLogic: CommonBusinessLogic):
     SearchPropertyBusinessLogic {
-    override fun isValid(searchResponseItemDomain: SearchResponseItemDomain): Boolean {
+    override fun filter(searchResponseItemDomain: SearchResponseItemDomain): Boolean {
         /**
          *  Ele apenas é elegível pro portal Viva Real:
             Quando for aluguel e no máximo o valor for de R$ 4.000,00.
@@ -14,7 +14,7 @@ class VivaRealBusinessLogic(val commonBusinessLogic: CommonBusinessLogic):
          */
         return isRentalLogicValid(searchResponseItemDomain) &&
                 isSaleLogicValid(searchResponseItemDomain) &&
-                commonBusinessLogic.isValid(searchResponseItemDomain)
+                commonBusinessLogic.filter(searchResponseItemDomain)
     }
 
     private fun isRentalLogicValid(searchResponseItemDomain: SearchResponseItemDomain) =

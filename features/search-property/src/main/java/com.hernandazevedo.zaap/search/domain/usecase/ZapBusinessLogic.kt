@@ -4,7 +4,7 @@ import com.hernandazevedo.zaap.search.domain.model.SearchResponseItemDomain
 
 class ZapBusinessLogic(val commonBusinessLogic: CommonBusinessLogic): SearchPropertyBusinessLogic {
 
-    override fun isValid(searchResponseItemDomain: SearchResponseItemDomain): Boolean{
+    override fun filter(searchResponseItemDomain: SearchResponseItemDomain): Boolean{
         /**
          * Ele apenas é elegível pro portal ZAP:
          *  Quando for aluguel e no mínimo o valor for de R$ 3.500,00.
@@ -12,7 +12,7 @@ class ZapBusinessLogic(val commonBusinessLogic: CommonBusinessLogic): SearchProp
          */
         return isRentalLogicValid(searchResponseItemDomain) &&
                 isSaleLogicValid(searchResponseItemDomain) &&
-                commonBusinessLogic.isValid(searchResponseItemDomain)
+                commonBusinessLogic.filter(searchResponseItemDomain)
     }
 
     private fun isRentalLogicValid(searchResponseItemDomain: SearchResponseItemDomain) =

@@ -8,7 +8,7 @@ import com.hernandazevedo.zaap.search.domain.usecase.BoundingBoxZap.MINLAT
 import com.hernandazevedo.zaap.search.domain.usecase.BoundingBoxZap.MINLON
 
 class CommonBusinessLogic: SearchPropertyBusinessLogic {
-    override fun isValid(searchResponseItemDomain: SearchResponseItemDomain): Boolean =
+    override fun filter(searchResponseItemDomain: SearchResponseItemDomain): Boolean =
         isLocationValid(searchResponseItemDomain) &&
         isBoundingBoxValid(searchResponseItemDomain.address.geoLocation.location)
 

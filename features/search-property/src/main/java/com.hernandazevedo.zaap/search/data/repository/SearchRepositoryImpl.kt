@@ -18,9 +18,7 @@ class SearchRepositoryImpl(private val searchRemoteDataSource: SearchRemoteDataS
                 searchRemoteDataSource.search()
                 .map(SearchResponseItemMapper::mapTo)
                 //Filter results according to the current search business logic
-                .filter {
-                    searchPropertyBusinessLogic.isValid(it)
-                }
+                .filter(searchPropertyBusinessLogic::filter)
             )
         } catch (exception: Exception) {
             exception.printStackTrace()
