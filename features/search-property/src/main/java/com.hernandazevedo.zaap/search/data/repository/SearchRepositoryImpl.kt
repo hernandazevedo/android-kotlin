@@ -7,14 +7,20 @@ import com.hernandazevedo.zaap.search.data.mapper.SearchResponseItemMapper
 import com.hernandazevedo.zaap.search.domain.failure.SearchFailure
 import com.hernandazevedo.zaap.search.domain.model.SearchResponseItemDomain
 import com.hernandazevedo.zaap.search.domain.repository.SearchRepository
+import com.hernandazevedo.zaap.search.domain.usecase.SearchPropertyBusinessLogic
 
 class SearchRepositoryImpl(private val searchRemoteDataSource: SearchRemoteDataSource) : SearchRepository {
-    override suspend fun search(): Result<List<SearchResponseItemDomain>, Failure> {
+    override suspend fun search(searchPropertyBusinessLogic: SearchPropertyBusinessLogic): Result<List<SearchResponseItemDomain>, Failure> {
+        //TODO implement here the cache for the results
+
         return try {
             Result.Success(
-                SearchResponseItemMapper.mapToList(
-                    searchRemoteDataSource.search()
-                )
+                searchRemoteDataSource.search()
+                .map(SearchResponseItemMapper::mapTo)
+                //Filter results according to the current search business logic
+                .filter {
+                    searchPropertyBusinessLogic.isValid(it)
+                }
             )
         } catch (exception: Exception) {
             exception.printStackTrace()

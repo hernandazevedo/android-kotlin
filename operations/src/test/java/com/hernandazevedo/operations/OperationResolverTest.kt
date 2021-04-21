@@ -73,6 +73,50 @@ internal class OperationResolverTest : BaseTest() {
         }
     }
 
+    @DisplayName("When execute method is called passing and operation")
+    @Nested
+    inner class AndOperation {
+
+        @DisplayName("Then it should execute the operation correctly")
+        @Test
+        fun shouldExecuteOperation() {
+            assertNotNull(operationResolver.execute("and", true))
+        }
+    }
+
+    @DisplayName("When execute method is called passing or operation")
+    @Nested
+    inner class OrOperation {
+
+        @DisplayName("Then it should execute the operation correctly")
+        @Test
+        fun shouldExecuteOperation() {
+            assertNotNull(operationResolver.execute("or", true))
+        }
+    }
+
+    @DisplayName("When execute method is called passing not operation")
+    @Nested
+    inner class NotOperation {
+
+        @DisplayName("Then it should execute the operation correctly")
+        @Test
+        fun shouldExecuteOperation() {
+            assertNotNull(operationResolver.execute("not", true))
+        }
+    }
+
+    @DisplayName("When execute method is called passing condition operation")
+    @Nested
+    inner class ConditionOperation {
+
+        @DisplayName("Then it should execute the operation correctly")
+        @Test
+        fun shouldExecuteOperation() {
+            assertNotNull(operationResolver.execute("condition", true, true, true))
+        }
+    }
+
     @DisplayName("When execute method is called passing a non existent operation")
     @Nested
     inner class NonExistentOperation {
@@ -85,4 +129,5 @@ internal class OperationResolverTest : BaseTest() {
 
         }
     }
+
 }
