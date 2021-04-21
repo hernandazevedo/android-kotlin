@@ -5,6 +5,7 @@ import com.hernandazevedo.zaap.core.base.UseCase
 import com.hernandazevedo.zaap.core.base.exception.Failure
 import com.hernandazevedo.zaap.search.domain.model.SearchResponseItemDomain
 import com.hernandazevedo.zaap.search.domain.repository.SearchRepository
+import com.hernandazevedo.zaap.search.domain.usecase.logic.SearchPropertyBusinessLogic
 
 class SearchPropertyUseCase(private val searchRepository: SearchRepository) :
     UseCase<List<SearchResponseItemDomain>, SearchPropertyUseCase.Params>() {

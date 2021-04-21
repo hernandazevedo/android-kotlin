@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import com.hernandazevedo.zaap.core.base.BaseViewModel
 import com.hernandazevedo.zaap.core.base.common.ResourceManager
 import com.hernandazevedo.zaap.search.domain.model.SearchResponseItemDomain
-import com.hernandazevedo.zaap.search.domain.usecase.SearchPropertyBusinessLogic
+import com.hernandazevedo.zaap.search.domain.usecase.logic.SearchPropertyBusinessLogic
 import com.hernandazevedo.zaap.search.domain.usecase.SearchPropertyUseCase
-import com.hernandazevedo.zaap.search.domain.usecase.VivaRealBusinessLogic
-import com.hernandazevedo.zaap.search.domain.usecase.ZapBusinessLogic
+import com.hernandazevedo.zaap.search.domain.usecase.logic.VivaRealBusinessLogic
+import com.hernandazevedo.zaap.search.domain.usecase.logic.ZapBusinessLogic
 
 class SearchViewModel(
     private val searchPropertyUseCase: SearchPropertyUseCase,

@@ -1,11 +1,11 @@
-package com.hernandazevedo.zaap.search.domain.usecase
+package com.hernandazevedo.zaap.search.domain.usecase.logic
 
 import com.hernandazevedo.zaap.search.domain.model.LocationDomain
 import com.hernandazevedo.zaap.search.domain.model.SearchResponseItemDomain
-import com.hernandazevedo.zaap.search.domain.usecase.BoundingBoxZap.MAXLAT
-import com.hernandazevedo.zaap.search.domain.usecase.BoundingBoxZap.MAXLON
-import com.hernandazevedo.zaap.search.domain.usecase.BoundingBoxZap.MINLAT
-import com.hernandazevedo.zaap.search.domain.usecase.BoundingBoxZap.MINLON
+import com.hernandazevedo.zaap.search.domain.usecase.logic.BoundingBoxZap.MAXLAT
+import com.hernandazevedo.zaap.search.domain.usecase.logic.BoundingBoxZap.MAXLON
+import com.hernandazevedo.zaap.search.domain.usecase.logic.BoundingBoxZap.MINLAT
+import com.hernandazevedo.zaap.search.domain.usecase.logic.BoundingBoxZap.MINLON
 
 class CommonBusinessLogic: SearchPropertyBusinessLogic {
     override fun filter(searchResponseItemDomain: SearchResponseItemDomain): Boolean =

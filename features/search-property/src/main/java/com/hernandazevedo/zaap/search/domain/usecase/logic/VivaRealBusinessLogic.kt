@@ -1,14 +1,16 @@
-package com.hernandazevedo.zaap.search.domain.usecase
+package com.hernandazevedo.zaap.search.domain.usecase.logic
 
 import com.hernandazevedo.zaap.search.domain.model.SearchResponseItemDomain
 
-class ZapBusinessLogic(val commonBusinessLogic: CommonBusinessLogic): SearchPropertyBusinessLogic {
-
-    override fun filter(searchResponseItemDomain: SearchResponseItemDomain): Boolean{
+class VivaRealBusinessLogic(val commonBusinessLogic: CommonBusinessLogic):
+    SearchPropertyBusinessLogic {
+    override fun filter(searchResponseItemDomain: SearchResponseItemDomain): Boolean {
         /**
-         * Ele apenas é elegível pro portal ZAP:
-         *  Quando for aluguel e no mínimo o valor for de R$ 3.500,00.
-         *  Quando for venda e no mínimo o valor for de R$ 600.000,00.
+         *  Ele apenas é elegível pro portal Viva Real:
+            Quando for aluguel e no máximo o valor for de R$ 4.000,00.
+            Quando for venda e no máximo o valor for de R$ 700.000,00.
+            Onde:
+         *
          */
         return isRentalLogicValid(searchResponseItemDomain) &&
                 isSaleLogicValid(searchResponseItemDomain) &&
@@ -18,10 +20,11 @@ class ZapBusinessLogic(val commonBusinessLogic: CommonBusinessLogic): SearchProp
     private fun isRentalLogicValid(searchResponseItemDomain: SearchResponseItemDomain) =
         (searchResponseItemDomain.pricingInfos.businessType == "RENTAL" &&
                 (searchResponseItemDomain.pricingInfos.rentalTotalPrice?.toInt()
-                    ?: 0) >= ZapBusinessConstants.MIN_RENTAL_PRICE)
+                    ?: 0) <= VivaRealBusinessConstants.MAX_RENTAL_PRICE)
 
     private fun isSaleLogicValid(searchResponseItemDomain: SearchResponseItemDomain) =
         (searchResponseItemDomain.pricingInfos.businessType == "SALE" &&
                 searchResponseItemDomain.pricingInfos.price.toInt()
-                     >= ZapBusinessConstants.MIN_SALE_PRICE)
+                <= VivaRealBusinessConstants.MAX_SALE_PRICE)
+
 }

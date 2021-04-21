@@ -1,4 +1,4 @@
-package com.hernandazevedo.zaap.search.domain.usecase
+package com.hernandazevedo.zaap.search.domain.usecase.logic
 
 import com.hernandazevedo.zaap.search.domain.model.SearchResponseItemDomain
 

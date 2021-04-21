@@ -6,11 +6,11 @@ import com.hernandazevedo.zaap.search.data.repository.SearchRepositoryImpl
 import com.hernandazevedo.zaap.search.datasource.remote.SearchApi
 import com.hernandazevedo.zaap.search.datasource.remote.SearchRemoteDataSourceImpl
 import com.hernandazevedo.zaap.search.domain.repository.SearchRepository
-import com.hernandazevedo.zaap.search.domain.usecase.CommonBusinessLogic
+import com.hernandazevedo.zaap.search.domain.usecase.logic.CommonBusinessLogic
 import com.hernandazevedo.zaap.search.domain.usecase.SearchPropertyUseCase
 import com.hernandazevedo.zaap.search.presentation.search.SearchViewModel
-import com.hernandazevedo.zaap.search.domain.usecase.VivaRealBusinessLogic
-import com.hernandazevedo.zaap.search.domain.usecase.ZapBusinessLogic
+import com.hernandazevedo.zaap.search.domain.usecase.logic.VivaRealBusinessLogic
+import com.hernandazevedo.zaap.search.domain.usecase.logic.ZapBusinessLogic
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module

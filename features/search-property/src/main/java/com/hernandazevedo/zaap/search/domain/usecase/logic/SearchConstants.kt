@@ -1,4 +1,4 @@
-package com.hernandazevedo.zaap.search.domain.usecase
+package com.hernandazevedo.zaap.search.domain.usecase.logic
 
 object BoundingBoxZap {
     val MINLON = -46.693419

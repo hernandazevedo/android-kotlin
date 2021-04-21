@@ -7,7 +7,7 @@ import com.hernandazevedo.zaap.search.data.mapper.SearchResponseItemMapper
 import com.hernandazevedo.zaap.search.domain.failure.SearchFailure
 import com.hernandazevedo.zaap.search.domain.model.SearchResponseItemDomain
 import com.hernandazevedo.zaap.search.domain.repository.SearchRepository
-import com.hernandazevedo.zaap.search.domain.usecase.SearchPropertyBusinessLogic
+import com.hernandazevedo.zaap.search.domain.usecase.logic.SearchPropertyBusinessLogic
 
 class SearchRepositoryImpl(private val searchRemoteDataSource: SearchRemoteDataSource) : SearchRepository {
     override suspend fun search(searchPropertyBusinessLogic: SearchPropertyBusinessLogic): Result<List<SearchResponseItemDomain>, Failure> {
