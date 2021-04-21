@@ -18,6 +18,7 @@ dependencies {
     implementation Dependencies.GeneralLibraries.loggingInterceptor
 
     implementation project(Dependencies.CommonsModules.core)
+    implementation project(Dependencies.MainModules.operations)
     implementation project(Dependencies.CommonsModules.network)
 
 

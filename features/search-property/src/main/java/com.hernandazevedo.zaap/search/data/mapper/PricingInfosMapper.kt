@@ -10,13 +10,12 @@ object PricingInfosMapper: BaseMapper<PricingInfos, PricingInfosDomain>() {
     }
 
     override fun mapTo(source: PricingInfos): PricingInfosDomain {
-        if(source.price.isNullOrBlank() || source.businessType.isNullOrBlank() || source.monthlyCondoFee.isNullOrBlank() || source.yearlyIptu.isNullOrBlank()) {
-            source.toString()
-        }
+
         return PricingInfosDomain(
             businessType = source.businessType,
             monthlyCondoFee = source.monthlyCondoFee,
             price = source.price,
+            rentalTotalPrice = source.rentalTotalPrice,
             yearlyIptu = source.yearlyIptu
         )
     }

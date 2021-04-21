@@ -15,8 +15,8 @@ class SearchActivity : BaseActivity() {
 
     private val searchViewModel: SearchViewModel by viewModel()
 
-    private val btSearchPrimary: Button by lazy { findViewById(R.id.btSearchPrimary) }
-    private val btSearchSecondary: Button by lazy { findViewById(R.id.btSearchSecondary) }
+    private val btSearchVivaReal: Button by lazy { findViewById(R.id.btSearchVivaReal) }
+    private val btSearchZap: Button by lazy { findViewById(R.id.btSearchZap) }
     private val btSearchUseTerms: Button by lazy { findViewById(R.id.btSearchUseTerms) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,14 +25,7 @@ class SearchActivity : BaseActivity() {
 
         // TODO analytics tagging
         setupButtons()
-        setupListeners()
         observeSearch()
-    }
-
-    private fun setupListeners() {
-        btSearchUseTerms.setOnClickListener {
-            // TODO use terms action
-        }
     }
 
     private fun observeSearch() {
@@ -43,12 +36,14 @@ class SearchActivity : BaseActivity() {
     }
 
     private fun handleSearch(searchResponseItemDomain: List<SearchResponseItemDomain>) {
-        val i = 0
+        var i = 0
         searchResponseItemDomain.forEach {
-            println("Found element $i")
-            println(it.address.city)
-            println(it.address.geoLocation)
-            println(it.address.neighborhood)
+            println("###################### Found element ${i++} ##########################")
+            println("id ${it.id}")
+            println("address.city ${it.address.city}")
+            println("address.geoLocation ${it.address.geoLocation}")
+            println("address.neighborhood ${it.address.neighborhood}")
+            println("###################### End ##########################")
         }
     }
 
@@ -57,27 +52,14 @@ class SearchActivity : BaseActivity() {
     }
 
     private fun setupButtons() {
-        btSearchPrimary.setupVivaReal()
-        btSearchSecondary.setupZap()
-    }
+        btSearchVivaReal.setOnClickListener {
+            searchViewModel.searchPropertyVivaReal()
+        }
 
-    private fun Button.setupVivaReal() {
-        text = getString(R.string.search_button_viva_real)
-        setOnClickListener {
-            //Todo implement search logic for vivaReal
-            searchViewModel.searchProperty()
+        btSearchZap.setOnClickListener {
+            searchViewModel.searchPropertyZap()
         }
     }
-
-    private fun Button.setupZap() {
-        text = getString(R.string.search_button_zap)
-        setOnClickListener {
-            //Todo implement search logic for zap
-            searchViewModel.searchProperty()
-        }
-    }
-
-
 
     private fun handleFailure(failure: Failure) {
         showLoading(false)

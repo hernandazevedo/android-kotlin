@@ -16,28 +16,30 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/btSearchPrimary"
+            android:id="@+id/btSearchVivaReal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:text="@string/search_button_viva_real"
             android:layout_marginStart="@dimen/margin_default"
             android:layout_marginEnd="@dimen/margin_default"
-            app:layout_constraintBottom_toTopOf="@+id/btSearchSecondary"
+            app:layout_constraintBottom_toTopOf="@+id/btSearchZap"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="primary" />
 
         <Button
-            android:id="@+id/btSearchSecondary"
+            android:id="@+id/btSearchZap"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:text="@string/search_button_zap"
             android:layout_marginStart="@dimen/margin_default"
             android:layout_marginTop="@dimen/margin_default"
             android:layout_marginEnd="@dimen/margin_default"
             app:layout_constraintBottom_toTopOf="@+id/btSearchUseTerms"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btSearchPrimary"
+            app:layout_constraintTop_toBottomOf="@+id/btSearchVivaReal"
             tools:text="secondary" />
 
         <Button
@@ -55,7 +57,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btSearchSecondary" />
+            app:layout_constraintTop_toBottomOf="@id/btSearchZap" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
