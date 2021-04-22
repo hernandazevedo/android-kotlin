@@ -58,7 +58,7 @@ class PaginatedSearchRepositoryImpl(private val searchRemoteDataSource: SearchRe
      * every time we get more data from the network.
      */
     override suspend fun getSearchResultStream(query: SearchPropertyBusinessLogic): Flow<Result<List<SearchResponseItemDomain>, Failure>> {
-        Log.d("GithubRepository", "New query: $query")
+        Log.d("PaginatedSearch", "New query: $query")
         lastRequestedPage = 1
         inMemoryCache.clear()
         if(requestAndSaveData(query))
@@ -90,7 +90,7 @@ class PaginatedSearchRepositoryImpl(private val searchRemoteDataSource: SearchRe
                     .map(SearchResponseItemMapper::mapTo)
 
             val paginatedList = getPage(response, lastRequestedPage, NETWORK_PAGE_SIZE)
-            Log.d("GithubRepository", "response $paginatedList")
+            Log.d("PaginatedSearch", "response $paginatedList")
             inMemoryCache.addAll(paginatedList)
 
             val itemsByQuery = findByQuery(query)
