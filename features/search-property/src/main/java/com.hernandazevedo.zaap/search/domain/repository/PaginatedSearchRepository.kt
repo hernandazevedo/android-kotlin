@@ -6,6 +6,7 @@ import com.hernandazevedo.zaap.search.domain.model.SearchResponseItemDomain
 import com.hernandazevedo.zaap.search.domain.usecase.search.SearchPropertyBusinessLogic
 import kotlinx.coroutines.flow.Flow
 
-interface SearchRepository {
-    suspend fun search(searchPropertyBusinessLogic: SearchPropertyBusinessLogic): Flow<Result<List<SearchResponseItemDomain>, Failure>>
+interface PaginatedSearchRepository {
+    suspend fun requestMore(query: SearchPropertyBusinessLogic)
+    suspend fun getSearchResultStream(query: SearchPropertyBusinessLogic): Flow<Result<List<SearchResponseItemDomain>, Failure>>
 }

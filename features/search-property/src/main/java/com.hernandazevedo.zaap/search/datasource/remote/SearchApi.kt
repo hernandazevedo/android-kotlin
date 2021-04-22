@@ -10,4 +10,7 @@ interface SearchApi {
 
     @GET(SEARCH_ENDPOINT)
     fun searchAsync(): Deferred<List<SearchResponseItem>>
+
+    @GET(SEARCH_ENDPOINT)
+    fun search(): List<SearchResponseItem>
 }

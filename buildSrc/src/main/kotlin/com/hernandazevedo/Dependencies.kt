@@ -44,17 +44,20 @@ class Dependencies : Plugin<Project> {
         const val kotlin = "1.4.10"
         const val koin = "2.0.1"
 
-        const val kotlinCoroutines = "1.3.1"
+        const val kotlinCoroutines = "1.4.2"
         const val kotlinCoroutinesAdapter = "0.9.2"
         const val kotlinTest = "1.3.50"
 
         const val kotlinPoet = "1.7.1"
         const val okio = "2.9.0"
 
+        const val glide = "4.9.0"
+
         const val appcompat = "1.2.0"
-        const val viewModel = "2.2.0"
-        const val recyclerView = "1.1.0"
+        const val viewModel = "2.3.0"
+        const val recyclerView = "1.2.0-beta01"
         const val constraintlayout = "2.0.2"
+        const val pagingRuntime = "3.0.0-beta01"
 
         const val moshi = "1.11.0"
         const val jsonObject = "20200518"
@@ -90,11 +93,17 @@ class Dependencies : Plugin<Project> {
         const val multidex = "2.0.1"
     }
 
+    object GlideLibraries {
+        const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+        const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+    }
 
     object GeneralLibraries {
         const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
         const val kotlinCoroutines =
             "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinCoroutines}"
+
+        const val kotlinCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinCoroutines}"
 
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
 
@@ -122,10 +131,16 @@ class Dependencies : Plugin<Project> {
         const val coreKtx = "androidx.core:core-ktx:${Versions.appcompat}"
         const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
         const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewModel}"
-        const val viewModelExtensions =
-            "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.viewModel}"
+
+        const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.viewModel}"
+
+        const val lifecycleLivedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.viewModel}"
+
         const val constraintlayout =
             "androidx.constraintlayout:constraintlayout:${Versions.constraintlayout}"
+
+        const val pagingRuntime = "androidx.paging:paging-runtime-ktx:${Versions.pagingRuntime}"
+
     }
 
     object MoshiLibraries {

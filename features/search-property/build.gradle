@@ -5,7 +5,17 @@ apply from: "$rootDir/common-android-feature.gradle"
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation Dependencies.AndroidxLibraries.appcompat
+    implementation Dependencies.AndroidxLibraries.coreKtx
     implementation Dependencies.AndroidxLibraries.constraintlayout
+    implementation Dependencies.AndroidxLibraries.viewModel
+    implementation Dependencies.AndroidxLibraries.lifecycleRuntime
+    implementation Dependencies.AndroidxLibraries.lifecycleLivedata
+    implementation Dependencies.AndroidxLibraries.pagingRuntime
+    implementation Dependencies.AndroidxLibraries.recyclerView
+
+    implementation Dependencies.GlideLibraries.glide
+    implementation Dependencies.GlideLibraries.glideCompiler
+
     implementation Dependencies.GoogleLibraries.materialDesign
 
     implementation Dependencies.GeneralLibraries.kotlinCoroutines
