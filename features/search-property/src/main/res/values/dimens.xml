@@ -32,4 +32,10 @@
     <dimen name="textfield_password_focused_stroke_width">1.7dp</dimen>
     <dimen name="textfield_password_size">20sp</dimen>
     <dimen name="textfield_password_margin">20dp</dimen>
+
+    <dimen name="row_item_margin_vertical">12dp</dimen>
+    <dimen name="row_item_margin_horizontal">12dp</dimen>
+    <dimen name="large_title_size">24sp</dimen>
+    <dimen name="small_title_size">16sp</dimen>
+
 </resources>

@@ -4,6 +4,6 @@ import com.hernandazevedo.zaap.search.data.datasource.SearchRemoteDataSource
 import com.hernandazevedo.zaap.search.datasource.model.SearchResponseItem
 
 class SearchRemoteDataSourceImpl(private val searchApi: SearchApi): SearchRemoteDataSource {
-    override suspend fun search(): List<SearchResponseItem> =
+    override suspend fun searchAsync(): List<SearchResponseItem> =
         searchApi.searchAsync().await()
 }

@@ -36,6 +36,13 @@ dependencies {
     implementation Dependencies.AndroidxLibraries.appcompat
     implementation Dependencies.AndroidxLibraries.coreKtx
     implementation Dependencies.AndroidxLibraries.constraintlayout
+    implementation Dependencies.AndroidxLibraries.viewModel
+    implementation Dependencies.AndroidxLibraries.lifecycleRuntime
+    implementation Dependencies.AndroidxLibraries.lifecycleLivedata
+    implementation Dependencies.GlideLibraries.glide
+    implementation Dependencies.GlideLibraries.glideCompiler
+    implementation Dependencies.AndroidxLibraries.pagingRuntime
+    implementation Dependencies.AndroidxLibraries.recyclerView
     implementation Dependencies.GeneralLibraries.koin
 
     implementation project(Dependencies.CommonsModules.core)
