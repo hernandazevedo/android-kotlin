@@ -56,8 +56,6 @@ class PaginatedSearchRepositoryImpl(private val searchRemoteDataSource: SearchRe
     // avoid triggering multiple requests in the same time
     private var isRequestInProgress = false
 
-    private var isFirstRun = true
-
     /**
      * Search repositories whose names match the query, exposed as a stream of data that will emit
      * every time we get more data from the network.
@@ -91,7 +89,7 @@ class PaginatedSearchRepositoryImpl(private val searchRemoteDataSource: SearchRe
 
         try {
 
-            if (isFirstRun || inMemoryCacheRaw.isEmpty()) {
+            if (inMemoryCacheRaw.isEmpty()) {
                 Log.d("PaginatedSearch", "Fetching data from remote server")
                 val response = searchRemoteDataSource.searchAsync()
                         .map(SearchResponseItemMapper::mapTo)
@@ -107,7 +105,6 @@ class PaginatedSearchRepositoryImpl(private val searchRemoteDataSource: SearchRe
             searchResults.emit(Result.Success(itemsByQuery))
 
             successful = true
-            isFirstRun = false
         } catch (exception: Exception) {
             searchResults.emit(Result.Failure(SearchFailure(exception.message ?: "")))
         }
