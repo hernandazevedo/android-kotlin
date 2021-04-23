@@ -35,16 +35,19 @@ private const val STARTING_PAGE_INDEX = 1
 /**
  * Repository class that works with local and remote data sources.
  */
-class PaginatedSearchRepositoryImpl(private val searchRemoteDataSource: SearchRemoteDataSource):
-    PaginatedSearchRepository {
+class PaginatedSearchRepositoryImpl(private val searchRemoteDataSource: SearchRemoteDataSource) :
+        PaginatedSearchRepository {
 
-    // keep the list of all results received
+    // keep the list of all results received to accumulate results for pagination
     private val inMemoryCache = mutableListOf<SearchResponseItemDomain>()
+
+    // keep the list of all results received to request the service only one time
+    private val inMemoryCacheRaw = mutableListOf<SearchResponseItemDomain>()
 
     // shared flow of results, which allows us to broadcast updates so
     // the subscriber will have the latest data
     private val searchResults = MutableSharedFlow<Result<List<SearchResponseItemDomain>, Failure>>(
-        replay = 1
+            replay = 1
     )
 
     // keep the last requested page. When the request is successful, increment the page number.
@@ -61,7 +64,7 @@ class PaginatedSearchRepositoryImpl(private val searchRemoteDataSource: SearchRe
         Log.d("PaginatedSearch", "New query: $query")
         lastRequestedPage = 1
         inMemoryCache.clear()
-        if(requestAndSaveData(query))
+        if (requestAndSaveData(query))
             lastRequestedPage++
 
         return searchResults
@@ -75,7 +78,7 @@ class PaginatedSearchRepositoryImpl(private val searchRemoteDataSource: SearchRe
         }
     }
 
-     suspend fun retry(query: SearchPropertyBusinessLogic) {
+    suspend fun retry(query: SearchPropertyBusinessLogic) {
         if (isRequestInProgress) return
         requestAndSaveData(query)
     }
@@ -86,16 +89,19 @@ class PaginatedSearchRepositoryImpl(private val searchRemoteDataSource: SearchRe
 
         try {
 
-            val response = searchRemoteDataSource.searchAsync()
-                    .map(SearchResponseItemMapper::mapTo)
+            if (inMemoryCacheRaw.isEmpty()) {
+                Log.d("PaginatedSearch", "Fetching data from remote server")
+                val response = searchRemoteDataSource.searchAsync()
+                        .map(SearchResponseItemMapper::mapTo)
+                inMemoryCacheRaw.addAll(response)
+            }
 
-            val paginatedList = getPage(response, lastRequestedPage, NETWORK_PAGE_SIZE)
-            Log.d("PaginatedSearch", "response $paginatedList")
+            val paginatedList = getPage(inMemoryCacheRaw, lastRequestedPage, NETWORK_PAGE_SIZE)
+
             inMemoryCache.addAll(paginatedList)
 
             val itemsByQuery = findByQuery(query)
-//            val itemsByQuery = inMemoryCache
-
+            Log.d("PaginatedSearch", "response $itemsByQuery")
             searchResults.emit(Result.Success(itemsByQuery))
 
             successful = true
@@ -107,8 +113,6 @@ class PaginatedSearchRepositoryImpl(private val searchRemoteDataSource: SearchRe
     }
 
     private fun findByQuery(query: SearchPropertyBusinessLogic): List<SearchResponseItemDomain> {
-        // from the in memory cache select only the repos whose name or description matches
-        // the query. Then order the results.
         return inMemoryCache.filter(query::filter)
     }
 
