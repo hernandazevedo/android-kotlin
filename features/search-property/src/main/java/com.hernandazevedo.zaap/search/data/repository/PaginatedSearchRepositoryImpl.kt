@@ -116,8 +116,6 @@ class PaginatedSearchRepositoryImpl(private val searchRemoteDataSource: SearchRe
     }
 
     private fun findByQuery(query: SearchPropertyBusinessLogic): List<SearchResponseItemDomain> {
-        // from the in memory cache select only the repos whose name or description matches
-        // the query. Then order the results.
         return inMemoryCache.filter(query::filter)
     }
 
