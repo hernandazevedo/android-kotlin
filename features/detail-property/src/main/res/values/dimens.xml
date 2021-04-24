@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default -->
+    <dimen name="size_default_minimum">48dp</dimen>
+    <dimen name="angle_default">90</dimen>
+
+    <!-- Spacing -->
+    <dimen name="margin_default">16dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">24dp</dimen>
+
+    <dimen name="large_title_size">24sp</dimen>
+    <dimen name="small_title_size">16sp</dimen>
+
+</resources>

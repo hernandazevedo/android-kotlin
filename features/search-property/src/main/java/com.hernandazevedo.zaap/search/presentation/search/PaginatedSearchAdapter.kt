@@ -3,12 +3,13 @@ package com.hernandazevedo.zaap.search.presentation.search
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import com.hernandazevedo.zaap.core.base.navigation.IntentFactory
 import com.hernandazevedo.zaap.search.domain.model.SearchResponseItemDomain
 
-class PaginatedSearchAdapter : ListAdapter<SearchResponseItemDomain, PaginatedSearchViewHolder>(REPO_COMPARATOR) {
+class PaginatedSearchAdapter(private val intentFactory: IntentFactory) : ListAdapter<SearchResponseItemDomain, PaginatedSearchViewHolder>(REPO_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaginatedSearchViewHolder {
-        return PaginatedSearchViewHolder.create(parent)
+        return PaginatedSearchViewHolder.create(parent, intentFactory)
     }
 
     override fun onBindViewHolder(holder: PaginatedSearchViewHolder, position: Int) {
