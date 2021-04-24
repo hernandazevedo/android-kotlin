@@ -9,32 +9,6 @@
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_medium">24dp</dimen>
 
-    <!-- Icon -->
-    <dimen name="textsize_icon">20sp</dimen>
-    <dimen name="textsize_iconbutton">24sp</dimen>
-
-    <!-- Button -->
-    <dimen name="angle_button">45</dimen>
-    <dimen name="radius_button">100dp</dimen>
-    <dimen name="padding_button">15dp</dimen>
-    <dimen name="padding_button_horizontal">60dp</dimen>
-    <dimen name="padding_button_vertical">12dp</dimen>
-    <dimen name="stroke_button">1dp</dimen>
-    <dimen name="textsize_button">16sp</dimen>
-
-    <!-- BottomSheetDialog -->
-    <dimen name="radius_bottomsheetdialog">8dp</dimen>
-
-    <!--    Password TextField-->
-    <dimen name="textfield_password_corner_radius">8dp</dimen>
-    <dimen name="angle_textfield_password">225</dimen>
-    <dimen name="textfield_password_stroke_width">1.2dp</dimen>
-    <dimen name="textfield_password_focused_stroke_width">1.7dp</dimen>
-    <dimen name="textfield_password_size">20sp</dimen>
-    <dimen name="textfield_password_margin">20dp</dimen>
-
-    <dimen name="row_item_margin_vertical">12dp</dimen>
-    <dimen name="row_item_margin_horizontal">12dp</dimen>
     <dimen name="large_title_size">24sp</dimen>
     <dimen name="small_title_size">16sp</dimen>
 
