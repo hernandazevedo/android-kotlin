@@ -27,7 +27,6 @@ import com.hernandazevedo.zaap.search.domain.repository.PaginatedSearchRepositor
 import com.hernandazevedo.zaap.search.domain.usecase.search.SearchPropertyBusinessLogic
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.single
 import java.util.*
 
 private const val STARTING_PAGE_INDEX = 1

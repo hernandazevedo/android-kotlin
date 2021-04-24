@@ -9,6 +9,7 @@ import com.hernandazevedo.zaap.search.domain.repository.PaginatedSearchRepositor
 import com.hernandazevedo.zaap.search.domain.usecase.search.CommonBusinessLogic
 import com.hernandazevedo.zaap.search.domain.usecase.search.VivaRealBusinessLogic
 import com.hernandazevedo.zaap.search.domain.usecase.search.ZapBusinessLogic
+import com.hernandazevedo.zaap.search.presentation.search.PaginatedSearchAdapter
 import com.hernandazevedo.zaap.search.presentation.search.PaginatedSearchViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -25,6 +26,7 @@ val searchFeatureModule: Module = module(override = true) {
     factory { CommonBusinessLogic() }
     factory { VivaRealBusinessLogic(commonBusinessLogic =  get()) }
     factory { ZapBusinessLogic(commonBusinessLogic = get()) }
+    factory { PaginatedSearchAdapter(intentFactory = get()) }
 
     single {
         PaginatedSearchRepositoryImpl(searchRemoteDataSource = get()) as PaginatedSearchRepository

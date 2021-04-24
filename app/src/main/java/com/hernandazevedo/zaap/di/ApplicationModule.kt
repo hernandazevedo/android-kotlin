@@ -2,6 +2,7 @@ package com.hernandazevedo.zaap.di
 
 import com.hernandazevedo.zaap.core.base.common.InternetValidator
 import com.hernandazevedo.zaap.core.base.common.ResourceManager
+import com.hernandazevedo.zaap.core.base.navigation.IntentFactory
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -14,4 +15,9 @@ val applicationModule = module(override = true) {
     single {
         ResourceManager(context = androidContext())
     }
+
+    single {
+        IntentFactory(context = androidContext())
+    }
+
 }

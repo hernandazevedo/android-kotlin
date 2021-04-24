@@ -22,7 +22,8 @@ class Dependencies : Plugin<Project> {
 
     object FeatureModules {
         const val searchProperty = ":features:search-property"
-        val asList = listOf(FeatureModules.searchProperty)
+        const val detailProperty = ":features:detail-property"
+        val asList = listOf(searchProperty, detailProperty)
     }
 
     object Releases {

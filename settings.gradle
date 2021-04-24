@@ -5,3 +5,4 @@ include ':commons:network'
 include ':commons:core'
 
 include ':features:search-property'
+include ':features:detail-property'

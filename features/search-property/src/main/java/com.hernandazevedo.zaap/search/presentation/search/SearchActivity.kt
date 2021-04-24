@@ -11,19 +11,23 @@ import com.hernandazevedo.zaap.core.base.Result
 import com.hernandazevedo.zaap.core.base.exception.Failure
 import com.hernandazevedo.zaap.core.base.extension.failure
 import com.hernandazevedo.zaap.core.base.extension.observe
+import com.hernandazevedo.zaap.core.base.navigation.IntentFactory
 import com.hernandazevedo.zaap.search.R
 import com.hernandazevedo.zaap.search.domain.failure.SearchFailure
 import com.hernandazevedo.zaap.search.domain.model.SearchResponseItemDomain
 import kotlinx.android.synthetic.main.activity_search.*
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchActivity : BaseActivity() {
 
     private val viewModelPaginated: PaginatedSearchViewModel by viewModel()
-    private val adapter = PaginatedSearchAdapter()
+    private val adapter: PaginatedSearchAdapter by inject()
 
     private val btSearchVivaReal: Button by lazy { findViewById(R.id.btSearchVivaReal) }
     private val btSearchZap: Button by lazy { findViewById(R.id.btSearchZap) }
+
+    private val intentFactory: IntentFactory by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
