@@ -20,6 +20,7 @@ import com.hernandazevedo.zaap.core.base.navigation.IntentFactory
 import com.hernandazevedo.zaap.core.base.navigation.IntentFactory.Companion.ACTION_DETAIL
 import com.hernandazevedo.zaap.search.R
 import com.hernandazevedo.zaap.search.domain.model.SearchResponseItemDomain
+import com.hernandazevedo.zaap.search.domain.usecase.search.CommonConstants.BUSINESS_TYPE_SALE
 
 class PaginatedSearchViewHolder(view: View, private val intentFactory: IntentFactory) :
     RecyclerView.ViewHolder(view) {
@@ -87,7 +88,7 @@ class PaginatedSearchViewHolder(view: View, private val intentFactory: IntentFac
     private fun createInfo3(
         resources: Resources,
         item: SearchResponseItemDomain
-    ) = if (item.pricingInfos.businessType == "SALE")
+    ) = if (item.pricingInfos.businessType == BUSINESS_TYPE_SALE)
         resources.getString(
             R.string.price,
             item.pricingInfos.price

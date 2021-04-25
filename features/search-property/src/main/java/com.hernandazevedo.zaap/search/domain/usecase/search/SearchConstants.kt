@@ -17,3 +17,8 @@ object VivaRealBusinessConstants {
     val MAX_RENTAL_PRICE = 4000
     val MAX_SALE_PRICE = 700000
 }
+
+object CommonConstants {
+    val BUSINESS_TYPE_SALE = "SALE"
+    val BUSINESS_TYPE_RENTAL = "RENTAL"
+}

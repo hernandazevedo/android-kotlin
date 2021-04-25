@@ -1,8 +1,10 @@
 package com.hernandazevedo.zaap.search.domain.usecase.search
 
 import com.hernandazevedo.zaap.search.domain.model.SearchResponseItemDomain
+import com.hernandazevedo.zaap.search.domain.usecase.search.CommonConstants.BUSINESS_TYPE_RENTAL
+import com.hernandazevedo.zaap.search.domain.usecase.search.CommonConstants.BUSINESS_TYPE_SALE
 
-class VivaRealBusinessLogic(val commonBusinessLogic: CommonBusinessLogic):
+class VivaRealBusinessLogic(val commonBusinessLogic: CommonBusinessLogic) :
     SearchPropertyBusinessLogic {
     override fun filter(searchResponseItemDomain: SearchResponseItemDomain): Boolean {
         /**
@@ -25,7 +27,7 @@ class VivaRealBusinessLogic(val commonBusinessLogic: CommonBusinessLogic):
     (imóveis com monthlyCondoFee não numérico ou inválido não são elegíveis).
      */
     private fun isMontlyCondoFeeValid(searchResponseItemDomain: SearchResponseItemDomain): Boolean {
-        if(searchResponseItemDomain.pricingInfos.businessType == "RENTAL") {
+        if (searchResponseItemDomain.pricingInfos.businessType == BUSINESS_TYPE_RENTAL) {
             try {
                 val rentalTotalPrice =
                     searchResponseItemDomain.pricingInfos.rentalTotalPrice?.toLong()
@@ -48,18 +50,19 @@ class VivaRealBusinessLogic(val commonBusinessLogic: CommonBusinessLogic):
     private fun isRentalLogicValid(searchResponseItemDomain: SearchResponseItemDomain): Boolean {
 
         //Quando o imóvel estiver dentro do bounding box dos arredores do Grupo ZAP (descrito abaixo) considere a regra de valor máximo (do aluguel do imóvel) 50% maior
-        val maxRentalPrice = if(commonBusinessLogic.isBoundingBoxValid(searchResponseItemDomain.address.geoLocation.location))
-            (VivaRealBusinessConstants.MAX_RENTAL_PRICE * 1.5).toInt()
-        else
-            VivaRealBusinessConstants.MAX_RENTAL_PRICE
+        val maxRentalPrice =
+            if (commonBusinessLogic.isBoundingBoxValid(searchResponseItemDomain.address.geoLocation.location))
+                (VivaRealBusinessConstants.MAX_RENTAL_PRICE * 1.5).toInt()
+            else
+                VivaRealBusinessConstants.MAX_RENTAL_PRICE
 
-        return (searchResponseItemDomain.pricingInfos.businessType == "RENTAL" &&
+        return (searchResponseItemDomain.pricingInfos.businessType == BUSINESS_TYPE_RENTAL &&
                 (searchResponseItemDomain.pricingInfos.rentalTotalPrice?.toInt()
                     ?: 0) <= maxRentalPrice)
     }
 
     private fun isSaleLogicValid(searchResponseItemDomain: SearchResponseItemDomain) =
-        (searchResponseItemDomain.pricingInfos.businessType == "SALE" &&
+        (searchResponseItemDomain.pricingInfos.businessType == BUSINESS_TYPE_SALE &&
                 searchResponseItemDomain.pricingInfos.price.toInt()
                 <= VivaRealBusinessConstants.MAX_SALE_PRICE)
 
