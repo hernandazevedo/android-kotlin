@@ -46,6 +46,7 @@ class Dependencies : Plugin<Project> {
         const val koin = "2.0.1"
 
         const val kotlinCoroutines = "1.4.2"
+        const val viewPagerIndicator = "1.0"
         const val kotlinCoroutinesAdapter = "0.9.2"
         const val kotlinTest = "1.3.50"
 
@@ -106,6 +107,7 @@ class Dependencies : Plugin<Project> {
 
         const val kotlinCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinCoroutines}"
 
+        const val viewPagerIndicator = "it.xabaras.android:viewpagerindicator:${Versions.viewPagerIndicator}"
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
 
         const val okHttp = "com.squareup.okhttp3:okhttp-urlconnection:${Versions.okHttp}"

@@ -1,12 +1,8 @@
 package com.hernandazevedo.zaap.detail.presentation.search
 
 import android.os.Bundle
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
-import com.bumptech.glide.Glide
-import com.bumptech.glide.Priority
-import com.bumptech.glide.request.RequestOptions
 import com.hernandazevedo.zaap.core.base.BaseActivity
 import com.hernandazevedo.zaap.core.base.common.DataConstants.IMAGES_EXTRA
 import com.hernandazevedo.zaap.core.base.common.DataConstants.INFO1_EXTRA
@@ -14,6 +10,7 @@ import com.hernandazevedo.zaap.core.base.common.DataConstants.INFO2_EXTRA
 import com.hernandazevedo.zaap.core.base.common.DataConstants.INFO3_EXTRA
 import com.hernandazevedo.zaap.core.base.common.DataConstants.INFO4_EXTRA
 import com.hernandazevedo.zaap.detail.R
+import it.xabaras.android.viewpagerindicator.widget.ViewPagerIndicator
 
 class DetailActivity : BaseActivity() {
 
@@ -22,6 +19,7 @@ class DetailActivity : BaseActivity() {
     private val info3: TextView by lazy { findViewById(R.id.info3) }
     private val info4: TextView by lazy { findViewById(R.id.info4) }
     private val viewPager: ViewPager by lazy { findViewById(R.id.viewPager) }
+    private val viewPagerIndicator: ViewPagerIndicator by lazy { findViewById(R.id.viewPagerIndicator) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +32,13 @@ class DetailActivity : BaseActivity() {
             info4.text = it.getString(INFO4_EXTRA)
             val images = it.getStringArrayList(IMAGES_EXTRA)
             images?.let { imageList ->
-                viewPager.adapter = ViewPagerAdapter(this@DetailActivity, ArrayList(imageList))
+                configureImageSlider(imageList)
             }
         }
+    }
 
+    private fun configureImageSlider(imageList: java.util.ArrayList<String>) {
+        viewPager.adapter = ViewPagerAdapter(this@DetailActivity, imageList.toList())
+        viewPagerIndicator.initWithViewPager(viewPager)
     }
 }
