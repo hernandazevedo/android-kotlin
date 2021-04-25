@@ -3,6 +3,7 @@ package com.hernandazevedo.zaap.detail.presentation.search
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
 import com.bumptech.glide.request.RequestOptions
@@ -20,7 +21,7 @@ class DetailActivity : BaseActivity() {
     private val info2: TextView by lazy { findViewById(R.id.info2) }
     private val info3: TextView by lazy { findViewById(R.id.info3) }
     private val info4: TextView by lazy { findViewById(R.id.info4) }
-    private val imageView: ImageView by lazy { findViewById(R.id.imageView) }
+    private val viewPager: ViewPager by lazy { findViewById(R.id.viewPager) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,15 +33,8 @@ class DetailActivity : BaseActivity() {
             info3.text = it.getString(INFO3_EXTRA)
             info4.text = it.getString(INFO4_EXTRA)
             val images = it.getStringArrayList(IMAGES_EXTRA)
-
-            //TODO create a view pager
-            images?.let { image ->
-                val options = RequestOptions()
-                    .priority(Priority.HIGH)
-                Glide.with(this)
-                    .load(image.first())
-                    .apply(options)
-                    .into(imageView)
+            images?.let { imageList ->
+                viewPager.adapter = ViewPagerAdapter(this@DetailActivity, ArrayList(imageList))
             }
         }
 
