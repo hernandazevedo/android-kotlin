@@ -15,4 +15,5 @@
     <string name="code">Código: %1$s</string>
     <string name="price">Compra: R$ %1$s</string>
     <string name="price_rental">Aluguel: R$ %1$s</string>
+    <string name="invalid_city">Cidade vazia</string>
 </resources>
