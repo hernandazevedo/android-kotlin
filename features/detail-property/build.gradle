@@ -19,6 +19,7 @@ dependencies {
     implementation Dependencies.GoogleLibraries.materialDesign
 
     implementation Dependencies.GeneralLibraries.kotlinCoroutines
+    implementation Dependencies.GeneralLibraries.viewPagerIndicator
 
     implementation Dependencies.GeneralLibraries.koin
 
