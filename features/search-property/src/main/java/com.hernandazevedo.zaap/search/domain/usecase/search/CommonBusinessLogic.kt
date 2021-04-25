@@ -9,8 +9,7 @@ import com.hernandazevedo.zaap.search.domain.usecase.search.BoundingBoxZap.MINLO
 
 class CommonBusinessLogic: SearchPropertyBusinessLogic {
     override fun filter(searchResponseItemDomain: SearchResponseItemDomain): Boolean =
-        isLocationValid(searchResponseItemDomain) &&
-        isBoundingBoxValid(searchResponseItemDomain.address.geoLocation.location)
+        isLocationValid(searchResponseItemDomain)
 
     /**
      * Um imóvel não é elegível em NENHUM PORTAL se:
@@ -23,7 +22,7 @@ class CommonBusinessLogic: SearchPropertyBusinessLogic {
     /**
      * Quando o imóvel estiver dentro do bounding box dos arredores do Grupo ZAP
      */
-    private fun isBoundingBoxValid(location: LocationDomain) =
+    fun isBoundingBoxValid(location: LocationDomain) =
         location.lat > MINLAT &&
                 location.lat < MAXLAT &&
                 location.lon > MINLON &&

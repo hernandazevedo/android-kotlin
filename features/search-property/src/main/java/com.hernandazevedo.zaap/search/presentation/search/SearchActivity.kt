@@ -67,6 +67,7 @@ class SearchActivity : BaseActivity() {
     private fun handleViewModelResult(result: Result<List<SearchResponseItemDomain>, Failure>) {
         when(result){
             is Result.Success -> {
+                logger.info("Search results size ${result.value.size}")
                 showEmptyList(result.value.isEmpty())
                 adapter.submitList(result.value)
                 adapter.notifyDataSetChanged()
