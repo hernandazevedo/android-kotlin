@@ -25,20 +25,24 @@ class VivaRealBusinessLogic(val commonBusinessLogic: CommonBusinessLogic):
     (imóveis com monthlyCondoFee não numérico ou inválido não são elegíveis).
      */
     private fun isMontlyCondoFeeValid(searchResponseItemDomain: SearchResponseItemDomain): Boolean {
-        try {
-            val rentalTotalPrice = searchResponseItemDomain.pricingInfos.rentalTotalPrice?.toLong()
-            val monthlyCondoFee = searchResponseItemDomain.pricingInfos.monthlyCondoFee?.toLong()
-            if (rentalTotalPrice != null && monthlyCondoFee != null) {
-                if (searchResponseItemDomain.pricingInfos.businessType == "RENTAL" &&
-                    monthlyCondoFee < (rentalTotalPrice * 0.3)
-                )
-                    return true
+        if(searchResponseItemDomain.pricingInfos.businessType == "RENTAL") {
+            try {
+                val rentalTotalPrice =
+                    searchResponseItemDomain.pricingInfos.rentalTotalPrice?.toLong()
+                val monthlyCondoFee =
+                    searchResponseItemDomain.pricingInfos.monthlyCondoFee?.toLong()
+                if (rentalTotalPrice != null && monthlyCondoFee != null) {
+                    if (monthlyCondoFee < (rentalTotalPrice * 0.3)
+                    )
+                        return true
+                }
+            } catch (e: Exception) {
+                return false
             }
-        } catch (e: Exception) {
             return false
         }
 
-        return false
+        return true
     }
 
     private fun isRentalLogicValid(searchResponseItemDomain: SearchResponseItemDomain): Boolean {

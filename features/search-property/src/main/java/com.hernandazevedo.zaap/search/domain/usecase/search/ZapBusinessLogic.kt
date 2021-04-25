@@ -23,15 +23,18 @@ class ZapBusinessLogic(val commonBusinessLogic: CommonBusinessLogic): SearchProp
         apenas considerando imóveis que tenham usableAreas acima de 0 (imóveis com usableAreas = 0 não são elegíveis).
      */
     private fun isUsableAreasValid(searchResponseItemDomain: SearchResponseItemDomain): Boolean {
+        if (searchResponseItemDomain.pricingInfos.businessType == "SALE") {
             val usableAreas = searchResponseItemDomain.usableAreas
 
             //FIXME How to calculate the square meter value? it is not written in the business document
-            if(usableAreas > 0) {
+            if (usableAreas > 0) {
                 val usableAreaPrice = calculateUsableAreaPrice(searchResponseItemDomain)
                 return usableAreaPrice > MIN_USABLE_AREA_PRICE
             }
 
-        return false
+            return false
+        }
+        return true
     }
 
     private fun calculateUsableAreaPrice(searchResponseItemDomain: SearchResponseItemDomain): Int {
