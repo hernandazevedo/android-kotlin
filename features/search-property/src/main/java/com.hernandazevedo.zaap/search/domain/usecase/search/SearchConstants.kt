@@ -10,6 +10,7 @@ object BoundingBoxZap {
 object ZapBusinessConstants {
     val MIN_RENTAL_PRICE = 3500
     val MIN_SALE_PRICE = 600000
+    val MIN_USABLE_AREA_PRICE = 3500
 }
 
 object VivaRealBusinessConstants {
