@@ -26,9 +26,8 @@ class ZapBusinessLogic(val commonBusinessLogic: CommonBusinessLogic): SearchProp
         if (searchResponseItemDomain.pricingInfos.businessType == "SALE") {
             val usableAreas = searchResponseItemDomain.usableAreas
 
-            //FIXME How to calculate the square meter value? it is not written in the business document
             if (usableAreas > 0) {
-                val usableAreaPrice = calculateUsableAreaPrice(searchResponseItemDomain)
+                val usableAreaPrice = calculateSquareMetersPrice(searchResponseItemDomain)
                 return usableAreaPrice > MIN_USABLE_AREA_PRICE
             }
 
@@ -37,9 +36,11 @@ class ZapBusinessLogic(val commonBusinessLogic: CommonBusinessLogic): SearchProp
         return true
     }
 
-    private fun calculateUsableAreaPrice(searchResponseItemDomain: SearchResponseItemDomain): Int {
-        //FIXME this logic is wrong, we need to understand how to calculate the square meter value
-        return MIN_USABLE_AREA_PRICE + 1
+    private fun calculateSquareMetersPrice(searchResponseItemDomain: SearchResponseItemDomain): Int {
+        //TODO understand if this logic is correct with the business team
+        val price = searchResponseItemDomain.pricingInfos.price.toInt()
+        val squareMeters = searchResponseItemDomain.usableAreas
+        return (price / squareMeters)
     }
 
     private fun isRentalLogicValid(searchResponseItemDomain: SearchResponseItemDomain): Boolean {

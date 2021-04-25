@@ -87,17 +87,16 @@ class PaginatedSearchViewHolder(view: View, private val intentFactory: IntentFac
     private fun createInfo3(
         resources: Resources,
         item: SearchResponseItemDomain
-    ) = "${
+    ) = if (item.pricingInfos.businessType == "SALE")
         resources.getString(
             R.string.price,
             item.pricingInfos.price
         )
-    }  | ${
+    else
         resources.getString(
             R.string.price_rental,
             item.pricingInfos.rentalTotalPrice ?: ""
         )
-    } "
 
     private fun createInfo2(
         resources: Resources,
