@@ -1,5 +1,7 @@
 package com.hernandazevedo.zaap.search.presentation.search
 
+import android.content.res.Resources
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,14 +11,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
 import com.bumptech.glide.request.RequestOptions
+import com.hernandazevedo.zaap.core.base.common.DataConstants.IMAGES_EXTRA
+import com.hernandazevedo.zaap.core.base.common.DataConstants.INFO1_EXTRA
+import com.hernandazevedo.zaap.core.base.common.DataConstants.INFO2_EXTRA
+import com.hernandazevedo.zaap.core.base.common.DataConstants.INFO3_EXTRA
+import com.hernandazevedo.zaap.core.base.common.DataConstants.INFO4_EXTRA
 import com.hernandazevedo.zaap.core.base.navigation.IntentFactory
 import com.hernandazevedo.zaap.core.base.navigation.IntentFactory.Companion.ACTION_DETAIL
 import com.hernandazevedo.zaap.search.R
 import com.hernandazevedo.zaap.search.domain.model.SearchResponseItemDomain
 
-/**
- * View Holder for a [Repo] RecyclerView list item.
- */
 class PaginatedSearchViewHolder(view: View, private val intentFactory: IntentFactory) :
     RecyclerView.ViewHolder(view) {
     private val info1: TextView = view.findViewById(R.id.info1)
@@ -30,8 +34,17 @@ class PaginatedSearchViewHolder(view: View, private val intentFactory: IntentFac
 
     init {
         view.setOnClickListener {
-            domain?.id?.let { id ->
-                val intent = intentFactory.getIntent(ACTION_DETAIL, mapOf("id" to id))
+            domain?.let {
+                val resources = itemView.resources
+                val intent = intentFactory.getIntent(action = ACTION_DETAIL,
+                    bundle = Bundle().apply {
+                        putString(INFO1_EXTRA, createInfo1(it))
+                        putString(INFO2_EXTRA, createInfo2(resources, it))
+                        putString(INFO3_EXTRA, createInfo3(resources, it))
+                        putString(INFO4_EXTRA, createInfo4(resources, it))
+                        putStringArrayList(IMAGES_EXTRA, ArrayList(it.images))
+                    }
+                )
                 view.context.startActivity(intent)
             }
         }
@@ -51,27 +64,10 @@ class PaginatedSearchViewHolder(view: View, private val intentFactory: IntentFac
     private fun showData(item: SearchResponseItemDomain) {
         val resources = itemView.resources
         this.domain = item
-        info1.text = item.address.city
-        info2.text = "${resources.getString(R.string.bedrooms, item.bedrooms.toString())} | " +
-                "${
-                    resources.getString(
-                        R.string.bathrooms,
-                        item.bathrooms.toString()
-                    )
-                } | ${resources.getString(R.string.usablearea, item.usableAreas.toString())} | " +
-                "${resources.getString(R.string.parkingspace, item.parkingSpaces.toString())}"
-        info3.text = "${
-            resources.getString(
-                R.string.price,
-                item.pricingInfos.price
-            )
-        }  | ${
-            resources.getString(
-                R.string.price_rental,
-                item.pricingInfos.rentalTotalPrice ?: ""
-            )
-        } "
-        info4.text = "${resources.getString(R.string.code, item.id)}"
+        info1.text = createInfo1(item)
+        info2.text = createInfo2(resources, item)
+        info3.text = createInfo3(resources, item)
+        info4.text = createInfo4(resources, item)
 
         val options = RequestOptions()
             .priority(Priority.HIGH)
@@ -82,6 +78,41 @@ class PaginatedSearchViewHolder(view: View, private val intentFactory: IntentFac
 
 
     }
+
+    private fun createInfo4(
+        resources: Resources,
+        item: SearchResponseItemDomain
+    ) = resources.getString(R.string.code, item.id)
+
+    private fun createInfo3(
+        resources: Resources,
+        item: SearchResponseItemDomain
+    ) = "${
+        resources.getString(
+            R.string.price,
+            item.pricingInfos.price
+        )
+    }  | ${
+        resources.getString(
+            R.string.price_rental,
+            item.pricingInfos.rentalTotalPrice ?: ""
+        )
+    } "
+
+    private fun createInfo2(
+        resources: Resources,
+        item: SearchResponseItemDomain
+    ) = "${resources.getString(R.string.bedrooms, item.bedrooms.toString())} | " +
+            "${
+                resources.getString(
+                    R.string.bathrooms,
+                    item.bathrooms.toString()
+                )
+            } | ${resources.getString(R.string.usablearea, item.usableAreas.toString())} | " +
+            resources.getString(R.string.parkingspace, item.parkingSpaces.toString())
+
+    private fun createInfo1(item: SearchResponseItemDomain) =
+        if (item.address.city == "") itemView.resources.getString(R.string.invalid_city) else item.address.city
 
     companion object {
         fun create(parent: ViewGroup, intentFactory: IntentFactory): PaginatedSearchViewHolder {

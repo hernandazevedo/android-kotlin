@@ -6,17 +6,61 @@
     android:layout_height="match_parent"
     android:layout_margin="@dimen/margin_default">
 
+
         <TextView
             android:id="@+id/info1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
-            android:textSize="@dimen/small_title_size"
+            android:paddingVertical="@dimen/row_item_margin_vertical"
+            android:textColor="@color/titleColor"
+            android:textSize="@dimen/large_title_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlCompat"
             tools:text="Info 1"/>
 
+        <TextView
+            android:id="@+id/info2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/small_title_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/info1"
+            tools:text="Info 2"/>
+
+        <TextView
+            android:id="@+id/info3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/small_title_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/info2"
+            tools:text="Info 3"/>
+
+        <TextView
+            android:id="@+id/info4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/small_title_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/info3"
+            tools:text="Info 3"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/info4"
+            />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
