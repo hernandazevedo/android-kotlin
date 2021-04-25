@@ -1,6 +1,8 @@
 package com.hernandazevedo.zaap.search.domain.usecase.search
 
 import com.hernandazevedo.zaap.search.domain.model.SearchResponseItemDomain
+import com.hernandazevedo.zaap.search.domain.usecase.search.CommonConstants.BUSINESS_TYPE_RENTAL
+import com.hernandazevedo.zaap.search.domain.usecase.search.CommonConstants.BUSINESS_TYPE_SALE
 import com.hernandazevedo.zaap.search.domain.usecase.search.ZapBusinessConstants.MIN_USABLE_AREA_PRICE
 
 class ZapBusinessLogic(val commonBusinessLogic: CommonBusinessLogic): SearchPropertyBusinessLogic {
@@ -23,7 +25,7 @@ class ZapBusinessLogic(val commonBusinessLogic: CommonBusinessLogic): SearchProp
         apenas considerando imóveis que tenham usableAreas acima de 0 (imóveis com usableAreas = 0 não são elegíveis).
      */
     private fun isUsableAreasValid(searchResponseItemDomain: SearchResponseItemDomain): Boolean {
-        if (searchResponseItemDomain.pricingInfos.businessType == "SALE") {
+        if (searchResponseItemDomain.pricingInfos.businessType == BUSINESS_TYPE_SALE) {
             val usableAreas = searchResponseItemDomain.usableAreas
 
             if (usableAreas > 0) {
@@ -45,7 +47,7 @@ class ZapBusinessLogic(val commonBusinessLogic: CommonBusinessLogic): SearchProp
 
     private fun isRentalLogicValid(searchResponseItemDomain: SearchResponseItemDomain): Boolean {
         val rentalTotalPrice = searchResponseItemDomain.pricingInfos.rentalTotalPrice?.toInt() ?: 0
-        return searchResponseItemDomain.pricingInfos.businessType == "RENTAL" &&
+        return searchResponseItemDomain.pricingInfos.businessType == BUSINESS_TYPE_RENTAL &&
                 rentalTotalPrice >= ZapBusinessConstants.MIN_RENTAL_PRICE
     }
 
@@ -55,7 +57,7 @@ class ZapBusinessLogic(val commonBusinessLogic: CommonBusinessLogic): SearchProp
             (ZapBusinessConstants.MIN_SALE_PRICE * 0.9).toInt()
         else
             ZapBusinessConstants.MIN_SALE_PRICE
-        return (searchResponseItemDomain.pricingInfos.businessType == "SALE" &&
+        return (searchResponseItemDomain.pricingInfos.businessType == BUSINESS_TYPE_SALE &&
                 searchResponseItemDomain.pricingInfos.price.toInt()
                 >= minRentalPrice)
     }
