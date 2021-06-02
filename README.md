@@ -1,8 +1,8 @@
-# eng-zap-challenge-kotlin
+
 
 ## Getting started
-This project uses some architectural concepts to decouple the search logic from the UI logic on different portals( Zap, Viva Real ).
-<br /> Also you can see the project requirements here: [Project Requirements](https://olxbr.github.io/cultura/challenges/engineering.html)
+This project uses some architectural concepts to decouple the search logic from the UI logic on different portals
+<br />
 
 
 ## Check the development steps on Trello
